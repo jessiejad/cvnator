@@ -23,6 +23,7 @@ ResumeController.getAll = function(req, res){
 
     Util.info('Load all resume');
 
+    //Resume.find(req.query).populate('person').exec(function(err, results){
     Resume.find({}).populate('person').exec(function(err, results){
         if(err){
             res.status(400).json({message : "Error Loading Resume"})
@@ -130,3 +131,37 @@ ResumeController.loadHandshake = function(req, res){
         }
     })
 };
+
+
+ResumeController.createResume = function(req,res){
+    Util.info('Create resume ');
+
+    var myResume = new Resume(req.body);
+    myResume.validate(function(error){
+
+        if(!error){
+            myResume.save(function(err,data){
+                if(err){
+                    Util.error(err);
+                    res.status(400).json({message : err})
+                }else{
+                    res.status(200).json({id : myResume._id})
+                }
+            })
+        }
+
+    })
+};
+
+ResumeController.deleteResume = function(req,res){
+
+    req.current_resume.remove();
+
+    res.status(200).json({id : req.current_resume._id})
+}
+
+ResumeController.updateResume = function(req,res){
+    req.current_resume.update(req.body, function(err, res) {
+
+    });
+}

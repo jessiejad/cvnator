@@ -7,14 +7,34 @@ var mongoose 	= require('mongoose'),
     async       = require('async'),
     moment      = require('moment');
 
+//------------------------------------------- User Validator
+var validatePresenceOf = function(value) {
+    // If you are authenticating by any of the oauth strategies, don't validate.
+    var Person = mongoose.model("Person");
+    Person.findOne({_id : value}).exec(function(err, result){
+        if(result != null){
+            return true;
+        }else{
+            return false
+        }
+    })
+};
+
 //------------------------------------------- Person Schema
 var ResumeSchema = new Schema({
 
     // --- Relation with a person
-    person : { type : Schema.Types.ObjectId, ref: 'Person' },
+    person : {
+        type : Schema.Types.ObjectId, ref: 'Person',
+        required : true,
+        validate	: [validatePresenceOf, 'Person have to be a real one']
+    },
 
     // --- Resume Title
-    title        : String,
+    title        : {
+        type : String,
+        required : true
+    },
 
     // --- List of experiences
     experiences : [{

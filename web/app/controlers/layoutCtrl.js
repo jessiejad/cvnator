@@ -6,7 +6,7 @@ angular.module('myResumeApp')
         /**
          * Load all CV from the database
          */
-        $http.get('http://0.0.0.0:3000/resumes/').then(function(response){
+        $http.get('http://localhost:3000/resumes/').then(function(response){
             $scope.resumes = response.data;
         },function(reason){
             console.log(reason);
