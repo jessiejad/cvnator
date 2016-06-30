@@ -27,18 +27,29 @@ angular.module('myResumeApp')
             .state('login',{
                 url         : '/login',
                 templateUrl : 'app/views/login.html',
-                controller  : 'loginCtrl' })
+                controller  : 'loginCtrl'
+            })
 
             .state('newResume',{
                 url         : '/newResume',
                 templateUrl : 'app/views/newResume.html',
-                controller  : 'newResumeCtrl' })
+                controller  : 'newResumeCtrl'
+            })
 
             .state('createUser', {
                 url : '/create-user',
                 templateUrl : 'app/views/create-user.html',
                 controller : 'createUserCtrl'
-            });
+            })
+
+            // Provisoire
+            .state('testApi', {
+                url : '/testapi',
+                templateUrl : 'app/views/newResume.html',
+                controller : 'testApiCtrl'
+            })
+
+        ;
 
         $urlRouterProvider.otherwise('/');
 

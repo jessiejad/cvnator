@@ -169,7 +169,8 @@ ResumeController.deleteResume = function(req,res){
  * @param res
  */
 ResumeController.updateResume = function(req,res){
-    req.current_resume.update(req.body, function(err, res) {
-        res.status(200).json({id : req.current_resume._id});
+    req.current_resume.update(req.body, function(err, result) {
+        console.log(err, result);
+        res.status(200).json({id : req.current_resume});
     });
 }
