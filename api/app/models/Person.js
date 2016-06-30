@@ -18,7 +18,8 @@ var PersonSchema = new Schema({
         email       : String
     },
 
-    photo : String
+    photo : String,
+
 });
 
 mongoose.model('Person', PersonSchema);

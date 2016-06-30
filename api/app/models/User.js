@@ -27,7 +27,13 @@ var UserSchema = new Schema({
         validate	: [validatePresenceOf, 'Password cannot be blank']
     },
 
-    token : String
+    token : String,
+
+    favorites : {
+        resumes: [
+            {type: Schema.Types.ObjectId, ref: 'Resume'}
+        ]
+    }
 
 });
 
