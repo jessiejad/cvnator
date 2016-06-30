@@ -1,0 +1,9 @@
+<p>
+    {{coordonnee.address.street}}, {{coordonnee.address.zipCode}} {{coordonnee.address.city}}
+</p>
+<div ng-if="coordonnee.email">
+    <span class="indicator">Email </span> <a href="mailto:{{coordonnee.email}}">{{coordonnee.email}}</a>
+</div>
+<div ng-if="coordonnee.telephone">
+    <span class="indicator">Telephone</span> {{coordonnee.telephone}}
+</div>

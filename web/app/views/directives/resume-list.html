@@ -1,0 +1,6 @@
+<h4>{{title}}</h4>
+<div layout="row" layout-padding layout-margin layout-wrap layout-align="start start">
+    <div flex="nogrow" ng-repeat="element in content | orderBy : orderFn : -1" class="content" ng-if="element.label">
+        {{element.label}} <em ng-if="getAttribute(element)">{{getAttribute(element) | levelFormat}}</em>
+    </div>
+</div>

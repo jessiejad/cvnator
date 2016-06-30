@@ -1,0 +1,56 @@
+<md-content layout="row" layout-fill layout-align="center center">
+
+    <div flex></div>
+
+    <md-card flex class="md-whiteframe-10dp">
+
+        <!-- TITLE -->
+        <div layout="column" layout-align="center center" style="padding-top: 10px">
+            <img src="images/logo.png" alt="My Resume App" style="width:100px" />
+            <h2 style="font-weight: 200">Your account : <span style="color: palevioletred;">MY</span>RESUME</h2>
+        </div>
+
+
+        <!-- FORM -->
+        <form name="authenticationForm" style="padding:10px" ng-submit="signup(user)">
+
+            <md-input-container class="md-block">
+
+                <label>Username</label>
+
+                <input ng-minlength="3" ng-model="user.username" type="text" name="name" autofocus="true">
+
+            </md-input-container>
+
+            <md-input-container  class="md-block">
+
+                <label>Mot de passe</label>
+                <input ng-minlength="5" ng-model="user.password" type="password" name="userpass">
+
+            </md-input-container>
+
+            <div ng-if="error" style="color: darkred">
+                {{error}}
+            </div>
+
+            <!-- SUBMIT -->
+            <div layout="row" layout-align="end end">
+
+                <md-button class="md-warn md-hue-3" ui-sref="login">
+                    x Annuler
+                </md-button>
+
+                <md-button type="submit" ng-disabled="!(user.username && user.password)" class="md-raised md-primary">
+                    Sign Up
+                </md-button>
+            </div>
+
+        </form>
+
+    </md-card>
+
+    <div flex></div>
+
+</md-content>
+
+

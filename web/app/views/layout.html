@@ -1,0 +1,90 @@
+<div layout="row" layout-fill>
+
+    <!-- START SIDENAV -->
+    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+                md-component-id="left"
+                aria-label="Show Person List"
+                md-is-locked-open="$mdMedia('gt-sm')">
+
+
+        <md-toolbar class="md-whiteframe-z1">
+        <md-content md-theme="docs-dark">
+            <md-input-container style="width: 100%;" class="md-icon-float md-block" md-no-float>
+                <md-icon md-svg-icon="images/icons/ic_search_white_24px.svg" ></md-icon>
+                <input ng-model="input" style="color: white" aria-label="search"/>
+            </md-input-container>
+        </md-content>
+        </md-toolbar>
+
+        <md-content flex>
+
+
+
+            <md-list>
+                <md-list-item class="md-3-line" ng-click="displayResume(resume)"
+                              ng-repeat="resume in resumes | filter : input | orderBy : 'person.name'"
+                              ng-class="{'active' : resume.person.name == current_resume.person.name}">
+
+                    <img ng-if="resume.person.photo" ng-src="images/candidate/{{resume.person.photo}}" class="md-avatar" alt="{{resume.person.name}}"/>
+                    <img ng-if="!resume.person.photo" ng-src="images/candidate/download.png" class="md-avatar" alt="Default" />
+
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{resume.person.name}}</h3>
+                        <h4 class="subText">{{resume.title | textLimit : 30}}</h4>
+                    </div>
+
+                </md-list-item>
+            </md-list>
+
+        </md-content>
+
+    </md-sidenav>
+    <!-- END SIDENAV -->
+
+    <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
+
+        <md-toolbar layout="row" class="md-whiteframe-z1">
+
+
+                <md-button id="main" class="menu" hide-gt-sm ng-click="toggleList()" aria-label="Show User List" style="margin-top: 6px">
+                    <md-icon md-svg-icon="images/icons/ic_menu_white_24px.svg" ></md-icon>
+                </md-button>
+
+                <h3 style="padding-left: 10px">{{title}}</h3>
+
+                <md-fab-speed-dial ng-if="resume_selected" md-open="fabIsOpen" ng-class="selectedMode" md-direction="down"
+                                   class="md-fab-top-right" style="position: absolute" ng-cloak
+                                   ng-mouseenter="fabIsOpen=true" ng-mouseleave="fabIsOpen=false">
+                    <md-fab-trigger>
+                        <md-button aria-label="menu" class="md-fab">
+                            <md-icon md-svg-src="images/icons/ic_menu_white_24px.svg"></md-icon>
+                        </md-button>
+                    </md-fab-trigger>
+
+                    <md-fab-actions>
+
+                        <md-button aria-label="Comment" class="md-fab md-raised md-mini" ng-click="openContact($event)">
+                            <md-icon md-svg-src="images/icons/ic_comment_black_24px.svg" aria-label="Leave comment"></md-icon>
+                            <md-tooltip md-autohide="true" md-direction="left" >Prendre contact avec {{current_resume.person.name}}</md-tooltip>
+                        </md-button>
+
+                        <md-button aria-label="Comment" class="md-fab md-raised md-mini" ng-click="listContact()">
+                            <md-icon md-svg-src="images/icons/ic_inbox_black_24px.svg" aria-label="Leave comment"></md-icon>
+                            <md-tooltip md-autohide="true" md-direction="left" >Voir les contacts de {{current_resume.person.name}}</md-tooltip>
+                        </md-button>
+
+                    </md-fab-actions>
+
+                </md-fab-speed-dial>
+
+
+        </md-toolbar>
+
+        <md-content id="content" flex md-scroll-y >
+
+            <ui-view></ui-view>
+
+        </md-content>
+
+    </div>
+</div>

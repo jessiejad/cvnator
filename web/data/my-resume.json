@@ -1,0 +1,73 @@
+[{
+
+  "person" : {
+
+    "nom"           : "hello",
+    "datenaissance": "",
+    "photo"         : "",
+
+    "coordonnee" : {
+
+      "adresse" : {
+        "rue"         : "",
+        "ville"       : "",
+        "code-postal" : "",
+
+      },
+      "email"     : "",
+      "telephone" : ""
+    }
+
+  },
+
+  "resume" : {
+
+    "title" : "",
+
+    "experiences" : [
+      {
+        "start"     : "",
+        "end"       : "",
+        "title"     : "",
+        "company"   : "",
+        "location"  : "",
+        "description" : ["",""]
+      }
+    ],
+
+    "educations" : [
+      {
+        "start"     : "",
+        "end"       : "",
+        "title"     : "",
+        "school"   : "",
+        "location"  : "",
+        "description" : ["",""]
+      }
+    ],
+
+    "hobbies" : [
+        {
+          "type" : "",
+          "content" : [{
+            "label" : "",
+            "detail" : ""
+          }]
+        }
+    ],
+
+    "competencies" : [
+      {
+        "type" : "",
+        "content" : [{
+          "label" : "",
+          "level" : ""
+        }]
+      }
+    ],
+
+    "extra" : ""
+
+  }
+}]
+
