@@ -29,6 +29,11 @@ angular.module('myResumeApp')
                 templateUrl : 'app/views/login.html',
                 controller  : 'loginCtrl' })
 
+            .state('newResume',{
+                url         : '/newResume',
+                templateUrl : 'app/views/newResume.html',
+                controller  : 'newResumeCtrl' })
+
             .state('createUser', {
                 url : '/create-user',
                 templateUrl : 'app/views/create-user.html',
