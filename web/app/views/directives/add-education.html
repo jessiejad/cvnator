@@ -1,0 +1,38 @@
+
+<md-tab label="Mes Formations">
+    <md-content class="md-padding">
+        <h1 class="md-display-2">Formation</h1>
+        <!-- FORM FORMATION-->
+
+        <form name="EducForm" ng-submit="addEduc(resume)">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Titre de la Formation</label>
+                <input ng-model="resume.educations.title">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Ecole</label>
+                <input ng-model="resume.educations.school">
+            </md-input-container>
+
+            <md-datepicker required ng-model="resume.educations.start" md-placeholder="Début">
+            </md-datepicker>
+            <md-datepicker ng-model="resume.educations.end" md-placeholder="Fin">
+            </md-datepicker>
+            <div layout-gt-sm="row">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Ville</label>
+                    <input ng-model="resume.educations.location">
+                </md-input-container>
+            </div>
+            <md-input-container class="md-block">
+                <label>Description</label>
+                        <textarea ng-model="resume.educations.description" md-maxlength="150" rows="5"
+                                  md-select-on-focus></textarea>
+            </md-input-container>
+
+
+            <md-button type="submit" class="md-raised md-primary">Suivant</md-button>
+
+        </form>
+    </md-content>
+</md-tab>

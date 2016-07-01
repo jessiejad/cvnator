@@ -7,6 +7,7 @@ var PersonController = exports;
 //--------------------------------------- Module dependencies.
 var mongoose 	= require('mongoose'),
     Person 		= mongoose.model('Person'),
+    Address 		= mongoose.model('Address'),
     moment      = require('moment'),
     Util        = require('../helpers/appUtils');
 
@@ -66,8 +67,11 @@ PersonController.getPerson = function(req, res){
 
 PersonController.createPerson = function(req, res){
     Util.info('Create person');
-    var person = Person(req.body);
 
+    var address = Address(req.body.contact.address);
+    address.save();
+    var person = Person(req.body);
+    person.contact.address = address;
     person.save(function(err, result){
         if(err){
             res.status(400).json({message : "create person error"});
