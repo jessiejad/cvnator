@@ -11,6 +11,8 @@ angular.module('myResumeApp')
             }
             $scope.resume = result.data;
             $scope.template = result.data.defaultTemplate || 'default';
+
+            console.log($scope.resume, $scope.template);
         }, function(reason){
             console.log(reason);
             $mdToast.simpleToast("Erreur lors de la récupération du cv")

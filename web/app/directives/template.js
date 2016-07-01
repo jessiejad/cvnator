@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myResumeApp')
-    .directive('template', function(){
+    .directive('template1', function(){
         return{
             restrict : 'E',
             templateUrl : 'app/views/directives/template.html',
