@@ -139,6 +139,7 @@ ResumeController.createResume = function(req,res){
 
     var myResume = new Resume(req.body);
     myResume.validate(function(error){
+        console.log(error);
         if(!error){
             myResume.save(function(err,data){
                 if(err){
