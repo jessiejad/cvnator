@@ -23,6 +23,7 @@ angular.module('myResumeApp')
             $mdToast.simpleToast("Erreur lors de la création d'une personne")
         });
         */
+        /*
         // ---- Call API to get users resume
         $http.get('http://localhost:3000/myResume').then(function(result){
             console.log(result);
@@ -33,7 +34,7 @@ angular.module('myResumeApp')
             console.log(reason);
             $mdToast.simpleToast("Erreur lors de la récupération du cv")
         });
-        /*
+        */
         // A remplacer ( resume to $scope.resume surement si ng-model )
         var resume = {
             "title" : "Création d'un cv via le web",
