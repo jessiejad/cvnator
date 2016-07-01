@@ -1,0 +1,7 @@
+<span id="soustitre">Période :</span> <span id="chiffre">{{start | momentFormat: 'MMM YYYY'}} <span ng-if="end"> - {{end | momentFormat: 'MMM YYYY'}} </span><span id="accolade">;</span></span><br/>
+
+<span id="soustitre">Intitulé :</span> <span id="texte">"{{title}}"</span><span id="accolade">;</span><br/>
+<span id="soustitre">Etablissement :</span> <span id="texte">"{{place}} - {{location}}"</span><span id="accolade">;</span><br/>
+<span ng-if="description"><span id="soustitre">Détail :</span> <ul><li id="texte" ng-repeat="detail in description">"{{detail}}"<span id="accolade">;</span><br/></li></ul></span>
+       
+

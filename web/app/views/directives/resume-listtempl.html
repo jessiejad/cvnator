@@ -1,0 +1,8 @@
+{{title}}
+
+
+    <div flex="nogrow" ng-repeat="element in content | orderBy : orderFn : -1"  ng-if="element.label">
+        <span id="soustitre">Intitulé :</span> <span id="texte">"{{element.label}}"</span><span id="accolade">;</span><br/>
+        <span id="soustitre">Niveau :</span><span id="chiffre"> <em ng-if="getAttribute(element)">{{getAttribute(element) | levelFormat}}</em></span><br/><br/>
+    </div>
+

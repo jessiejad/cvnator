@@ -1,0 +1,142 @@
+/**
+    SIDENAV
+**/
+.active {
+    background-color: rgba(245,245,245 ,1);
+}
+h4.subText{
+    font-size: 0.8em !important;
+    color:#9E9E9E !important;
+}
+#template a{
+    color: #8C9EFF;
+}
+#template{
+    padding:30px;
+    font-size: 1em;
+    font-family: "Helvetica Neue";
+    background-color:#E1E6FA; 
+}
+/**
+    ENTETE
+**/
+#template #entete{
+    width: 100%;
+    margin-top:50px;
+}
+
+#template #entete img{
+    border-radius: 50px;
+    width:100px;
+    height:100px
+}
+#template #entete div{
+    text-align: left;
+}
+/**
+   TITRE
+**/
+#template h1{
+    text-align: center;
+    text-transform: uppercase;
+    color: #8C9EFF;
+}
+/**
+   SECTION
+**/
+/*#resume .resume_block{*/
+    /*display: none;*/
+/*}*/
+#template .extra{
+    text-align: center;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+#template h3{
+    border-bottom: 1px solid black;
+    cursor: pointer
+}
+#template h4{
+    font-weight: normal;
+    margin: 0px;
+}
+#template h5{
+    font-weight: 200;
+    margin: 0px;
+}
+
+#template #experience{
+
+
+}
+#template #formation{
+    width:49%;
+    display: inline-block;
+}
+
+#template #competence{
+    width:49%;
+    margin-right: 1%;
+    margin-top: 60px;
+    display:inline-block;
+}
+
+#template #loisir{
+    width: 49%;
+    margin-top: 60px;
+    display: inline-block;
+}
+
+#template #blocexpforma{
+    display: inline-block;
+    width: 100%;
+}
+
+#template #bloccompelois{
+    display: inline-block;
+    width: 100%;
+}
+/**
+    resume-line
+**/
+resume-line{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+resume-line .date{
+    font-size: 0.7em;
+    color: gray;
+}
+resume-line ul{
+    list-style: none;
+    padding: 0px;
+    font-size: 0.8em;
+    margin-top:5px;
+    margin-bottom: 0px;
+}
+resume-line ul li{
+    padding-bottom: 5px;
+    color: gray;
+}
+resume-line ul li:last-child{
+    padding-bottom: 0px;
+}
+coordonnee-person span.indicator{
+    color: #757575;
+}
+/**
+    List free
+**/
+
+.content{
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 5px;
+    border:1px solid grey;
+    color: #555;
+    font-size: 0.8em;
+}
+.content em{
+    font-size: 0.8em;
+}
