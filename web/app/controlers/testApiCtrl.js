@@ -6,7 +6,8 @@
 angular.module('myResumeApp')
     .controller('testApiCtrl', function($scope, $http, $mdToast, $stateParams) {
 
-
+        /*
+        var idPerson;
         var person = {
             "name" : "Je suis une personne",
             "birthdate" : "01/07/2016"
@@ -16,12 +17,12 @@ angular.module('myResumeApp')
         // ---- Call API to create a person
         $http.post('http://localhost:3000/person', person).then(function(result){
             console.log(result);
+            idPerson = result._id;
         }, function(reason){
             console.log(reason);
             $mdToast.simpleToast("Erreur lors de la création d'une personne")
         });
-
-        /*
+        */
         // ---- Call API to get users resume
         $http.get('http://localhost:3000/myResume').then(function(result){
             console.log(result);
