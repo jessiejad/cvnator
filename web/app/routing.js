@@ -31,6 +31,13 @@ angular.module('myResumeApp')
                 parent  : 'home'
             })
 
+             .state('monResume',{
+                url     :'/monResume',
+                templateUrl : 'app/views/monResume.html',
+                controller  : 'monResumeCtrl',
+                
+            })
+
             .state('handshake',{
                 url         : 'resume/:resumeId/handshakes',
                 templateUrl : 'app/views/handshake.html',
