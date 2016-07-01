@@ -35,6 +35,20 @@ angular.module('myResumeApp')
             $scope.resume_selected  = true;
         };
 
+          $scope.updateTemplate = function(resume){
+            $scope.current_resume   = resume;
+            $scope.title            = resume.title;
+            $scope.person           = resume.person;
+            $scope.resume_selected  = true;
+        };
+
+         $scope.updateTemplate2 = function(resume){
+            $scope.current_resume   = resume;
+            $scope.title            = resume.title;
+            $scope.person           = resume.person;
+            $scope.resume_selected  = true;
+        };
+
         $scope.getPerson = function(){
             return $scope.person;
         }
@@ -89,5 +103,22 @@ angular.module('myResumeApp')
         $scope.listContact = function(){
             // --- Transition to go to resume
             $state.transitionTo('handshake', {resumeId : $scope.current_resume._id, person : $scope.person });
+        }
+
+        /**
+        *   Change le template du cv pour le template 1
+        */
+        $scope.changeTemplate = function(){
+         
+            // --- Transition to go to resume
+            $state.transitionTo('template', {resumeId : $scope.current_resume._id, person : $scope.person });
+
+        }
+
+        $scope.changeTemplate2 = function(){
+         
+            // --- Transition to go to resume
+            $state.transitionTo('template2', {resumeId : $scope.current_resume._id, person : $scope.person });
+
         }
     });

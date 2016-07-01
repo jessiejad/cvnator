@@ -1,0 +1,82 @@
+<md-content id="template2">
+
+    <div id="entete" layout="row" layout-align="start start" flex>
+
+        <img ng-if="resume.person.photo" ng-src="images/candidate/{{resume.person.photo}}" alt="{{resume.person.name}}" style="width:100px;height: 100px"/>
+        <img ng-if="!resume.person.photo" ng-src="images/candidate/download.png" alt="Default" style="width:100px;height: 100px"/>
+
+        <div flex></div>
+
+        <div id="coord" layout="column" layout-align="end start">
+            <span id="titre">.Coordonnées</span>
+            <span id="accolade">{</span>
+            <span><span id="soustitre">Nom :</span><span id="texte">"{{resume.person.name}}"</span><span id="accolade">;</span></span>
+
+            <coordonnee-persontempl coordonnee="resume.person.contact"></coordonnee-persontempl>
+
+            <span id="accolade">}</span>
+        </div>
+
+    </div>
+
+    <h1>{{resume.title}}</h1>
+
+    <div ng-if="resume.extra" class="extra">
+        {{resume.resume.extra}}
+    </div>
+
+    <div ng-if="resume.experiences.length">
+
+         <span id="titre">.Expériences professionnelles</span><br/>
+         <span id="accolade">{</span><br/>
+        <resume-linetempl ng-repeat="exp in resume.experiences | orderBy : orderFn : -1 track by $index"
+                     title       = "exp.title"
+                     start       = "exp.start"
+                     end         = "exp.end"
+                     place       = "exp.company"
+                     location    = "exp.location"
+                     description = "exp.description"></resume-linetempl>
+        <span id="accolade">}</span><br/><br/>
+    </div>
+
+    <div ng-if="resume.educations.length">
+         <span id="titre">.Formations</span><br/>
+         <span id="accolade">{</span><br/>
+        
+
+        <resume-linetempl ng-repeat="formation in resume.educations | orderBy : orderFn : -1 track by $index"
+                     title       = "formation.title"
+                     start       = "formation.start"
+                     end         = "formation.end"
+                     place       = "formation.school"
+                     location    = "formation.location"
+                     description = "formation.description"></resume-linetempl>
+        <span id="accolade">}</span><br/><br/>
+    </div>
+
+    <div ng-if="resume.competencies.length" ng-cloak>
+
+         <span id="titre">.Compétences</span><br/>
+         <span id="accolade">{</span><br/>
+        <resume-listtempl ng-repeat="competence in resume.competencies track by $index"
+                     title="competence.type"
+                     content="competence.content"
+                     attribute="'level'"></resume-listtempl>
+
+
+		<span id="accolade">}</span><br/><br/>
+    </div>
+
+    <div ng-if="resume.hobbies.length">
+
+        <span id="titre">.Loisirs</span><br/>
+        <span id="accolade">{</span><br/>
+        <resume-listtempl ng-repeat="hobby in resume.hobbies track by $index"
+                     title="hobby.type"
+                     content="hobby.content"
+                     attribute="'detail'"></resume-listtempl>
+        <span id="accolade">}</span>
+    </div>
+
+
+</md-content>

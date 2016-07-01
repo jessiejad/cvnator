@@ -4,6 +4,7 @@ var UserController = exports;
 //--------------------------------------- Module dependencies.
 var mongoose 	= require('mongoose'),
     User 		= mongoose.model('User'),
+    Resume 		= mongoose.model('Resume'),
     Util        = require('../helpers/appUtils'),
     async       = require('async'),
     moment      = require('moment'),
@@ -56,13 +57,12 @@ UserController.getResume = function(req, res){
 
     Util.info('Load users Resume');
 
-    User.findOne({ token : req.current_user.token }).populate('resume').exec(function(error, result) {
+    Resume.findOne({ _id : req.current_user.resume }).populate('person').exec(function(error, result) {
         console.log(result);
-        res.status(200).json(result.resume);
+        res.status(200).json(result);
     });
 
 };
-
 
 /**
  * Load users favorite resumes
