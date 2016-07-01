@@ -10,7 +10,7 @@ angular.module('myResumeApp')
         // A remplacer ( resume to $scope.resume surement si ng-model )
         var resume = {
             "title" : "Création d'un cv via le web",
-            "person" : 44
+            "person" : "5774d098958f6ea818d3f3fc"
         }
         console.log(resume);
 
