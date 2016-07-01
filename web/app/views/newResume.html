@@ -1,41 +1,53 @@
-<script type="text/ng-template" id="default-errors"> 
-    <ng-message when="required">This field is required</ng-message> 
-</script>
-
 <md-content>
     <md-tabs md-dynamic-height="" md-border-bottom="">
       <md-tab label="Information générale">
-        <md-content class="md-padding">
-          
+        <md-content class="md-padding"> 
+		
 		  <form name="formulaireIG" ng-submit="foo()"  novalidate>
 		  <md-input-container>
-		  <input ng-model="user.prenom" placeholder="Prenom" required>
+		  <input type="text" name="prenom" ng-model="person.prenom" placeholder="Prenom" required />
+		  <div ng-messages="formulaireIG.prenom.$error">
+                <div ng-message="required">Champs requis</div>
+		 </div>
 		  </md-input-container>
 		  
 		  <md-input-container>
-		  <input ng-model="user.nom" placeholder="Nom" required>
+		  <input type="text" name="nom" ng-model="person.nom" placeholder="Nom" required="">
+		  <div ng-messages="formulaireIG.nom.$error">
+                <div ng-message="required">Champs requis</div>
+			</div>
 		  </md-input-container>
 		  
 		  <h4>Date de naissance</h4>
-		  <md-datepicker ng-model="user.naissance" md-placeholder="JJ/MM/AAAA">
+		  <md-datepicker name="birthDate" ng-model="person.birthDate" md-placeholder="JJ/MM/AAAA" required>
 		  </md-datepicker>
+		  <div ng-messages="formulaireIG.birthDate.$error">
+			<div ng-message="required">Date requise</div>
+		</div>
+		  
 		  
 		<md-input-container>
         <label>Email</label>
-        <input ng-model="user.email" type="email" required>
+        <input name="email" ng-model="user.email" type="email" required="" ng-pattern="/^.+@.+\..+$/">
+		<div ng-messages="formulaireIG.email.$error" role="alert">
+          <div ng-message-exp="['required', 'pattern']">
+            Adresse-mail requise.
+          </div>
+        </div>
       </md-input-container>
 	  
 	  <div ng-messages="Main.registerForm.username.$error"> 
     <ng-messages-include src="default-errors"></ng-messages-include>
-</div>
+	</div>
 	  
 	  <input type="submit" value="Formation" />
 	  </form>
+
 		  
       </md-content>
       </md-tab>
 	  
-      <md-tab label="Formation">
+      <md-tab label="Formation" ng-disabled="formulaireIG.$invalid">
         <md-content class="md-padding">
           <p>
 		  contenu
