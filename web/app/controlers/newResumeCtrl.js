@@ -5,9 +5,7 @@
 
 angular.module('myResumeApp')
     .controller('newResumeCtrl', function($scope, $http,$mdToast,$stateParams) {
-        
-    });
-	
-$scope.genres = ('MADAME MONSIEUR').split(' ').map(function(genre) {
+        $scope.genres = ('MADAME MONSIEUR').split(' ').map(function(genre) {
         return {abbrev: genre};
       });
+    });
