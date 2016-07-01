@@ -3,47 +3,48 @@
         <md-tab label="Information générale">
             <md-content class="md-padding">
 
-                <form name="formulaireIG" ng-submit="addPerson(person)"  novalidate>
+                <form name="formulaireIG" ng-submit="addPerson(person)" novalidate>
 
-                   <!-- <md-input-container>
-                        <md-select ng-model="" name="genre" required>
-                            <md-option>
-                                Madame
-                            </md-option>
-                            <md-option>
-                                Monsieur
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                    <div ng-messages="formulaireIG.genre.$error">
-                        <div ng-message="required">Choix requis</div>
-                    </div>
--->
+                    <!-- <md-input-container>
+                         <md-select ng-model="" name="genre" required>
+                             <md-option>
+                                 Madame
+                             </md-option>
+                             <md-option>
+                                 Monsieur
+                             </md-option>
+                         </md-select>
+                     </md-input-container>
+                     <div ng-messages="formulaireIG.genre.$error">
+                         <div ng-message="required">Choix requis</div>
+                     </div>
+ -->
                     <md-input-container>
-                        <input  ng-model="person.name" placeholder="Prenom" required />
+                        <input ng-model="person.name" placeholder="Prenom" required/>
                         <div ng-messages="formulaireIG.prenom.$error">
                             <div ng-message="required">Champs requis</div>
                         </div>
                     </md-input-container>
 
                     <md-input-container>
-                        <input  placeholder="Nom" >
+                        <input placeholder="Nom">
                         <div ng-messages="formulaireIG.nom.$error">
                             <div ng-message="required">Champs requis</div>
                         </div>
                     </md-input-container>
 
                     <h4>Date de naissance</h4>
-                    <md-datepicker  ng-model="person.birthDate" md-placeholder="JJ/MM/AAAA" required>
+                    <md-datepicker ng-model="person.birthDate" md-placeholder="JJ/MM/AAAA" required>
                     </md-datepicker>
                     <div ng-messages="formulaireIG.birthDate.$error">
                         <div ng-message="required">Date requise</div>
                     </div>
 
 
-                    <md-input-container >
+                    <md-input-container>
                         <label>Email</label>
-                        <input name="email"  ng-model="person.contact.email" type="email" required="" ng-pattern="/^.+@.+\..+$/">
+                        <input name="email" ng-model="person.contact.email" type="email" required=""
+                               ng-pattern="/^.+@.+\..+$/">
                         <div ng-messages="formulaireIG.email.$error" role="alert">
                             <div ng-message-exp="['required', 'pattern']">
                                 Adresse-mail requise.
@@ -52,14 +53,15 @@
                     </md-input-container>
 
                     <md-input-container>
-                        <input  name="adresse" ng-model="person.contact.address.street" placeholder="9 rue de l'exemple" required>
+                        <input name="adresse" ng-model="person.contact.address.street" placeholder="9 rue de l'exemple"
+                               required>
                         <div ng-messages="formulaireIG.adresse.$error">
                             <div ng-message="required">Champs requis</div>
                         </div>
                     </md-input-container>
 
                     <md-input-container>
-                        <input  name="ville" ng-model="person.contact.address.city" placeholder="Votre ville" required>
+                        <input name="ville" ng-model="person.contact.address.city" placeholder="Votre ville" required>
                         <div ng-messages="formulaireIG.ville.$error">
                             <div ng-message="required">Champs requis</div>
                         </div>
@@ -76,9 +78,9 @@
                     </md-input-container>
 
                     <md-input-container>
-                        <input  placeholder="Titre de votre CV">
+                        <input placeholder="Titre de votre CV">
                     </md-input-container>
-
+<p>esse</p>
                     <md-button type="submit" class="md-raised md-primary">Suivant</md-button>
                 </form>
 

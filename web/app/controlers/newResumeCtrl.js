@@ -11,6 +11,11 @@ angular.module('myResumeApp')
                 console.log(reason);
                 $mdToast.simpleToast("Erreur lors de la création d'une personne")
             });
+        };
+        var resume = {
+            "title" : "Création d'un cv via le web",
+            "person" : idPerson,
+            "defaultTemplate" : "temp1"
         }
         $scope.addEduc=function(resume) {
             $http.post('http://localhost:3000/resumes', resume).then(function (result) {
@@ -20,9 +25,9 @@ angular.module('myResumeApp')
                 $mdToast.simpleToast("Erreur lors de la création du cv")
             });
         }
-        $scope.addExp=function(resume) {}
+        /**$scope.addExp=function(resume) {}
         $scope.addComp=function(resume) {}
-        $scope.addHobb=function(resume) {}
+        $scope.addHobb=function(resume) {}**/
 
 
     });

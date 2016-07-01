@@ -4,7 +4,7 @@
         <h1 class="md-display-2">Formation</h1>
         <!-- FORM FORMATION-->
 
-        <form name="EducForm" ng-submit="addEduc(resume.educations)">
+        <form name="EducForm" ng-submit="addEduc(resume)">
             <md-input-container class="md-block" flex-gt-sm>
                 <label>Titre de la Formation</label>
                 <input ng-model="resume.educations.title">
@@ -31,7 +31,7 @@
             </md-input-container>
 
 
-            <md-button type="submit" ng-click="goExp"class="md-raised md-primary">Suivant</md-button>
+            <md-button type="submit" class="md-raised md-primary">Suivant</md-button>
 
         </form>
     </md-content>
