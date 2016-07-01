@@ -23,8 +23,8 @@ ResumeController.getAll = function(req, res){
 
     Util.info('Load all resume');
 
-    //Resume.find(req.query).populate('person').exec(function(err, results){
-    Resume.find({}).populate('person').exec(function(err, results){
+    Resume.find(req.query).populate('person').exec(function(err, results){
+    //Resume.find({}).populate('person').exec(function(err, results){
         if(err){
             res.status(400).json({message : "Error Loading Resume"})
         }else{
@@ -75,9 +75,6 @@ ResumeController.findResume = function(req, res, next, id){
                 req.current_resume = resume;
                 next();
             })
-
-
-
         }
     })
 };
@@ -132,20 +129,27 @@ ResumeController.loadHandshake = function(req, res){
     })
 };
 
-
+/**
+ * Create a resume
+ * @param req
+ * @param res
+ */
 ResumeController.createResume = function(req,res){
     Util.info('Create resume ');
 
     var myResume = new Resume(req.body);
     myResume.validate(function(error){
-
+        console.log(error);
         if(!error){
             myResume.save(function(err,data){
                 if(err){
                     Util.error(err);
-                    res.status(400).json({message : err})
+                    res.status(400).json({message : err});
                 }else{
-                    res.status(200).json({id : myResume._id})
+                    req.current_user.resume = myResume;
+                    req.current_user.save();
+                    //res.status(200).json({id : myResume._id});
+                    res.status(200).json(req.current_user);
                 }
             })
         }
@@ -153,15 +157,24 @@ ResumeController.createResume = function(req,res){
     })
 };
 
+/**
+ * Delete a resume
+ * @param req
+ * @param res
+ */
 ResumeController.deleteResume = function(req,res){
-
     req.current_resume.remove();
-
-    res.status(200).json({id : req.current_resume._id})
+    res.status(200).json({id : req.current_resume._id});
 }
 
+/**
+ * Update a resume
+ * @param req
+ * @param res
+ */
 ResumeController.updateResume = function(req,res){
-    req.current_resume.update(req.body, function(err, res) {
-
+    req.current_resume.update(req.body, function(err, result) {
+        console.log(err, result);
+        res.status(200).json({id : req.current_resume});
     });
 }

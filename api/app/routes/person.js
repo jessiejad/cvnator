@@ -12,6 +12,9 @@ module.exports = function(router) {
     // -------- Retrieve a specific person
     router.get('/people/:id_person',  auth.isAuth,personController.getPerson);
 
+    // -------- Create person
+    router.post('/person',  auth.isAuth, personController.createPerson);
+
     // -------- Params catching
     router.param('id_person', personController.findPerson);
 

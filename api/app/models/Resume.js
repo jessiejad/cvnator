@@ -12,11 +12,11 @@ var validatePresenceOf = function(value) {
     // If you are authenticating by any of the oauth strategies, don't validate.
     var Person = mongoose.model("Person");
     Person.findOne({_id : value}).exec(function(err, result){
-        if(result != null){
-            return true;
-        }else{
-            return false
+        console.log(result);
+        if(result == null) {
+            return false;
         }
+        return true;
     })
 };
 
@@ -35,6 +35,8 @@ var ResumeSchema = new Schema({
         type : String,
         required : true
     },
+
+    defaultTemplate : String,
 
     // --- List of experiences
     experiences : [{

@@ -1,11 +1,38 @@
+<script type="text/ng-template" id="default-errors"> 
+    <ng-message when="required">This field is required</ng-message> 
+</script>
+
 <md-content>
     <md-tabs md-dynamic-height="" md-border-bottom="">
-        <md-tab label="one">
+
+        <md-tab label="Information générale">
             <md-content class="md-padding">
-                <h1 class="md-display-2">Informations générales</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus
-                    volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices.
-                    Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
+
+                <form name="formulaireIG" ng-submit="addPerson(person)"  novalidate>
+                    <md-input-container>
+                        <input ng-model="person.name" placeholder="Prenom" required>
+                    </md-input-container>
+
+                    <md-input-container>
+                        <input ng-model="user.nom" placeholder="Nom" required>
+                    </md-input-container>
+
+                    <h4>Date de naissance</h4>
+                    <md-datepicker ng-model="person.birthDate" md-placeholder="JJ/MM/AAAA">
+                    </md-datepicker>
+
+<div>
+                    <md-input-container>
+                        <label>Email</label>
+                        <input ng-model="person.email" type="email" required>
+                    </md-input-container>
+</div>
+                    <div ng-messages="Main.registerForm.username.$error">
+                        <ng-messages-include src="default-errors"></ng-messages-include>
+                    </div>
+
+                    <md-button type="submit" class="md-raised md-primary">Suivant</md-button>                </form>
+
             </md-content>
         </md-tab>
         <add-education></add-education>
@@ -14,7 +41,6 @@
 
         <add-competencie></add-competencie>
         <add-hobbie></add-hobbie>
-
 
     </md-tabs>
 </md-content>
