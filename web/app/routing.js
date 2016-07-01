@@ -19,7 +19,7 @@ angular.module('myResumeApp')
 
              .state('template',{
                 url     :'template/:resumeId',
-                templateUrl : 'app/views/template.html',
+                templateUrl : 'app/views/directives/template.html',
                 controller  : 'templateCtrl',
                 parent  : 'home'
             })
