@@ -17,20 +17,6 @@ angular.module('myResumeApp')
                 parent      : 'home'
             })
 
-             .state('template',{
-                url     :'template/:resumeId',
-                templateUrl : 'app/views/directives/template.html',
-                controller  : 'templateCtrl',
-                parent  : 'home'
-            })
-
-             .state('template2',{
-                url     :'template2/:resumeId',
-                templateUrl : 'app/views/template2.html',
-                controller  : 'template2Ctrl',
-                parent  : 'home'
-            })
-
              .state('monResume',{
                 url     :'/monResume',
                 templateUrl : 'app/views/monResume.html',
