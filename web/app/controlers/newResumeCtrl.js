@@ -11,7 +11,7 @@ angular.module('myResumeApp')
                 console.log(reason);
                 $mdToast.simpleToast("Erreur lors de la création d'une personne")
             });
-        }
+        };
         var resume = {
             "title" : "Création d'un cv via le web",
             "person" : idPerson,
