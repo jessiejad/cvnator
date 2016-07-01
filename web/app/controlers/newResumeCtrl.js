@@ -25,9 +25,9 @@ angular.module('myResumeApp')
                 $mdToast.simpleToast("Erreur lors de la création du cv")
             });
         }
-        $scope.addExp=function(resume) {}
+        /**$scope.addExp=function(resume) {}
         $scope.addComp=function(resume) {}
-        $scope.addHobb=function(resume) {}
+        $scope.addHobb=function(resume) {}**/
 
 
     });
