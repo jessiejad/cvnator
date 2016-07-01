@@ -64,7 +64,7 @@ angular.module('myResumeApp')
 
             .state('userResume',{
                 url         : '/userResume',
-                templateUrl : 'app/views/template2.html',
+                templateUrl : 'app/views/userResume.html',
                 controller  : 'userResumeCtrl'
             })
 

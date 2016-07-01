@@ -10,6 +10,7 @@ angular.module('myResumeApp')
                 // User n'a pas encore de resume
             }
             $scope.resume = result.data;
+            $scope.template = result.data.defaultTemplate || 'default';
         }, function(reason){
             console.log(reason);
             $mdToast.simpleToast("Erreur lors de la récupération du cv")
