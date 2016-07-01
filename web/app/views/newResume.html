@@ -4,21 +4,7 @@
             <md-content class="md-padding">
 
                 <form name="formulaireIG" ng-submit="addPerson(person)" novalidate>
-
-                    <!-- <md-input-container>
-                         <md-select ng-model="" name="genre" required>
-                             <md-option>
-                                 Madame
-                             </md-option>
-                             <md-option>
-                                 Monsieur
-                             </md-option>
-                         </md-select>
-                     </md-input-container>
-                     <div ng-messages="formulaireIG.genre.$error">
-                         <div ng-message="required">Choix requis</div>
-                     </div>
- -->
+				
                     <md-input-container>
                         <input ng-model="person.name" placeholder="Prenom" required/>
                         <div ng-messages="formulaireIG.prenom.$error">
@@ -51,6 +37,15 @@
                             </div>
                         </div>
                     </md-input-container>
+					
+					<md-input-container>
+					<input ng-model="person.phone" type="text" placeholder="Numéro de téléphone" name="phone" required>
+					<div ng-messages="formulaireIG.phone.$error" role="alert">
+					<div ng-message-exp="['required']">
+						Champs requis
+					</div>
+					</div>
+					</md-input-container>
 
                     <md-input-container>
                         <input name="adresse" ng-model="person.contact.address.street" placeholder="9 rue de l'exemple"
