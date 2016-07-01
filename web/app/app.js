@@ -6,7 +6,8 @@ angular.module('myResumeApp',[
      */
     'ui.router',
     'ngMaterial',
-    'LocalStorageModule'
+    'LocalStorageModule',
+	'ngMessages'
 ])
     .config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')
