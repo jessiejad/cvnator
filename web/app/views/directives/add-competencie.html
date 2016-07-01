@@ -1,0 +1,24 @@
+<md-tab label="Mes Competences">
+    <md-content class="md-padding">
+        <h1 class="md-display-2">Compétences</h1>
+        <form name="CompForm" ng-submit="addComp(resume.competencies)">
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Nom de la compétence</label>
+                <input ng-model="resume.competencies.content.label">
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Genre de la compétence</label>
+                <input ng-model="resume.competencies.genre">
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Niveau</label>
+                <input ng-model="resume.competencies.level">
+            </md-input-container>
+            <md-button type="submit" class="md-raised md-primary">Suivant</md-button>
+
+        </form>
+    </md-content>
+</md-tab>
