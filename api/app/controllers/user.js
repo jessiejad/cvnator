@@ -52,6 +52,17 @@ UserController.create = function(req, res){
 
 };
 
+UserController.getResume = function(req, res){
+
+    Util.info('Load users Resume');
+
+    User.findOne({ token : req.current_user.token }).populate('resume').exec(function(error, result) {
+        console.log(result);
+        res.status(200).json(result.resume);
+    });
+
+};
+
 
 /**
  * Load users favorite resumes

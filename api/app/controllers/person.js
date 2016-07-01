@@ -63,3 +63,16 @@ PersonController.getPerson = function(req, res){
 
     res.status(200).json(req.current_person)
 };
+
+PersonController.createPerson = function(req, res){
+    Util.info('Create person');
+    var person = Person(req.body);
+
+    person.save(function(err, result){
+        if(err){
+            res.status(400).json({message : "create person error"});
+        }else{
+            res.status(200).json(person._id);
+        }
+    })
+};

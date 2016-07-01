@@ -11,6 +11,9 @@ module.exports = function(router) {
 
     router.post('/users', userController.create);
 
+    // -------- Find users resume
+    router.get('/myResume', auth.isAuth, userController.getResume);
+
     // -------- Find all favorite resumes for an user
     router.get('/favorites', auth.isAuth, userController.getFavorites);
 

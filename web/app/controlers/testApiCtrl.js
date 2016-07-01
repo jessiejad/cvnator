@@ -6,11 +6,38 @@
 angular.module('myResumeApp')
     .controller('testApiCtrl', function($scope, $http, $mdToast, $stateParams) {
 
-        
+
+        var person = {
+            "name" : "Je suis une personne",
+            "birthdate" : "01/07/2016"
+        }
+        console.log(person);
+
+        // ---- Call API to create a person
+        $http.post('http://localhost:3000/person', person).then(function(result){
+            console.log(result);
+        }, function(reason){
+            console.log(reason);
+            $mdToast.simpleToast("Erreur lors de la création d'une personne")
+        });
+
+        /*
+        // ---- Call API to get users resume
+        $http.get('http://localhost:3000/myResume').then(function(result){
+            console.log(result);
+            if(result == null) {
+                // User n'a pas encore de resume
+            }
+        }, function(reason){
+            console.log(reason);
+            $mdToast.simpleToast("Erreur lors de la récupération du cv")
+        });
+        /*
         // A remplacer ( resume to $scope.resume surement si ng-model )
         var resume = {
             "title" : "Création d'un cv via le web",
-            "person" : "5774d098958f6ea818d3f3fc"
+            "person" : "5774d098958f6ea818d3f3fc",
+            "defaultTemplate" : "temp1"
         }
         console.log(resume);
 

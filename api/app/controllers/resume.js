@@ -146,7 +146,10 @@ ResumeController.createResume = function(req,res){
                     Util.error(err);
                     res.status(400).json({message : err});
                 }else{
-                    res.status(200).json({id : myResume._id});
+                    req.current_user.resume = myResume;
+                    req.current_user.save();
+                    //res.status(200).json({id : myResume._id});
+                    res.status(200).json(req.current_user);
                 }
             })
         }

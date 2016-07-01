@@ -33,7 +33,9 @@ var UserSchema = new Schema({
         resumes: [
             {type: Schema.Types.ObjectId, ref: 'Resume'}
         ]
-    }
+    },
+
+    resume : {type: Schema.Types.ObjectId, ref: 'Resume'}
 
 });
 

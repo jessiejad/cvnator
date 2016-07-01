@@ -36,6 +36,8 @@ var ResumeSchema = new Schema({
         required : true
     },
 
+    defaultTemplate : String,
+
     // --- List of experiences
     experiences : [{
         "start"     : String,
