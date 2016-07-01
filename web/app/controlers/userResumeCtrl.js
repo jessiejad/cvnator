@@ -15,4 +15,6 @@ angular.module('myResumeApp')
             $mdToast.simpleToast("Erreur lors de la récupération du cv")
         });
 
+        
+
     });
