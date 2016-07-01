@@ -1,4 +1,4 @@
-<md-content  id="template">
+<md-content id="monResume">
 
     <div id="entete" layout="row" layout-align="start start" flex>
 
@@ -22,88 +22,94 @@
     <div ng-if="resume.extra" class="extra">
         {{resume.resume.extra}}
     </div>
-      
-  
+<md-button class="md-raised md-warn">Modifier</md-button>
+<md-button class="md-raised md-warn">Supprimer</md-button>
 
-  <md-content id="template" class="md-padding" layout-xs="column" layout="row">
     <div flex-xs="" flex-gt-xs="50" layout="column">
-    <div ng-if="resume.experiences.length">
-      <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="" style="background-color:#90CAF9;">
+    <div ng-if="resume.educations.length">
+
+           <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
         <md-card-title>
           <md-card-title-text>
+           <div ng-if="resume.experiences.length">
 
-            <h3>Expériences professionnelles</h3>
-            
-            <resume-line ng-repeat="exp in resume.experiences | orderBy : orderFn : -1 track by $index"
+        <h3>Experiences Professionnelles</h3>
+
+        <resume-line ng-repeat="exp in resume.experiences | orderBy : orderFn : -1 track by $index"
                      title       = "exp.title"
                      start       = "exp.start"
                      end         = "exp.end"
                      place       = "exp.company"
                      location    = "exp.location"
                      description = "exp.description"></resume-line>
-          </md-card-title-text>
-         
-        </md-card-title>
-       
-        
-    
-        
-      </md-card>
-  </div>
-   <div ng-if="resume.educations.length">
 
-      <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch="" style="background-color:#80CBC4;">
-        <md-card-title>
-          <md-card-title-text>
-            <h3>Competences</h3>
-
-        <resume-list ng-repeat="competence in resume.competencies track by $index"
-                     title="competence.type"
-                     content="competence.content"
-                     attribute="'level'"></resume-list>
+    </div>
           </md-card-title-text>
-        </md-card-title>
-        
-      </md-card>
+          
     </div>
 </div>
-    <div flex-xs="" flex-gt-xs="50" layout="column">
-         <div ng-if="resume.educations.length">
-      <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch="" style="background-color:#E1BEE7;">
+<div flex-xs="" flex-gt-xs="50" layout="column">
+    <div ng-if="resume.educations.length">
+
+           <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
         <md-card-title>
           <md-card-title-text>
-            <h3>Formations</h3>
-            <resume-line ng-repeat="formation in resume.educations | orderBy : orderFn : -1 track by $index"
+            <div ng-if="resume.educations.length">
+
+        <h3>Formations</h3>
+
+        <resume-line ng-repeat="formation in resume.educations | orderBy : orderFn : -1 track by $index"
                      title       = "formation.title"
                      start       = "formation.start"
                      end         = "formation.end"
                      place       = "formation.school"
                      location    = "formation.location"
                      description = "formation.description"></resume-line>
+
+    </div>
           </md-card-title-text>
           
-        </md-card-title>
-       
-      </md-card>
+    </div>
+</div>
 
-  </div>
-       <div ng-if="resume.educations.length">
-      <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch="" style="background-color:#FFF59D;">
+    <div ng-if="resume.competencies.length" ng-cloak>
+
+         <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
         <md-card-title>
           <md-card-title-text>
-            <h3>Loisirs</h3>
+            <div ng-if="resume.educations.length">
+
+        <h3>Competences</h3>
+
+        <resume-list ng-repeat="competence in resume.competencies tracj by $index"
+                     title="competence.type"
+                     content="competence.content"
+                     attribute="'level'"></resume-list>
+ </div>
+          </md-card-title-text>
+          
+    </div>
+
+    </div>
+
+    <div ng-if="resume.hobbies.length">
+
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch="">
+        <md-card-title>
+          <md-card-title-text>
+            <div ng-if="resume.educations.length">
+
+        <h3>Loisirs</h3>
 
         <resume-list ng-repeat="hobby in resume.hobbies track by $index"
                      title="hobby.type"
                      content="hobby.content"
                      attribute="'detail'"></resume-list>
 
+        </div>
           </md-card-title-text>
-          
-        </md-card-title>
-       
-      </md-card>
-     </div>
     </div>
-    
+</div>
+
+
 </md-content>
