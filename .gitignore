@@ -3,3 +3,7 @@
 
 api/node_modules/
 web/bower_components/
+
+*.wt
+
+database/
