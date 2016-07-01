@@ -62,6 +62,12 @@ angular.module('myResumeApp')
                 controller  : 'accueilCvCtrl'
             })
 
+            .state('userResume',{
+                url         : '/userResume',
+                templateUrl : 'app/views/template2.html',
+                controller  : 'userResumeCtrl'
+            })
+
             // Provisoire
             .state('testApi', {
                 url : '/testapi',
