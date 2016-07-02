@@ -1,98 +1,221 @@
 <md-content>
-    <md-tabs md-dynamic-height="" md-border-bottom="">
+    <md-tabs md-dynamic-height="" md-border-bottom="" md-selected="selectedIndex">
         <md-tab label="Information générale">
             <md-content class="md-padding">
 
-                <form name="formulaireIG" ng-submit="addPerson(person)" novalidate>
-
-                    <!-- <md-input-container>
-                         <md-select ng-model="" name="genre" required>
-                             <md-option>
-                                 Madame
-                             </md-option>
-                             <md-option>
-                                 Monsieur
-                             </md-option>
-                         </md-select>
-                     </md-input-container>
-                     <div ng-messages="formulaireIG.genre.$error">
-                         <div ng-message="required">Choix requis</div>
-                     </div>
- -->
-                    <md-input-container>
-                        <input ng-model="person.name" placeholder="Prenom" required/>
-                        <div ng-messages="formulaireIG.prenom.$error">
-                            <div ng-message="required">Champs requis</div>
-                        </div>
-                    </md-input-container>
-
-                    <md-input-container>
-                        <input placeholder="Nom">
-                        <div ng-messages="formulaireIG.nom.$error">
-                            <div ng-message="required">Champs requis</div>
-                        </div>
-                    </md-input-container>
-
-                    <h4>Date de naissance</h4>
-                    <md-datepicker ng-model="person.birthDate" md-placeholder="JJ/MM/AAAA" required>
-                    </md-datepicker>
-                    <div ng-messages="formulaireIG.birthDate.$error">
-                        <div ng-message="required">Date requise</div>
-                    </div>
-
-
-                    <md-input-container>
-                        <label>Email</label>
-                        <input name="email" ng-model="person.contact.email" type="email" required=""
-                               ng-pattern="/^.+@.+\..+$/">
-                        <div ng-messages="formulaireIG.email.$error" role="alert">
-                            <div ng-message-exp="['required', 'pattern']">
-                                Adresse-mail requise.
+                <form name="formulaireIG" ng-submit="addPerson(person,resume.title)" novalidate>
+                    <ng-form name="formPersonn">
+                        <md-input-container>
+                            <input ng-model="person.name" placeholder="Prenom" required/>
+                            <div ng-messages="formulaireIG.prenom.$error">
+                                <div ng-message="required">Champs requis</div>
                             </div>
-                        </div>
-                    </md-input-container>
+                        </md-input-container>
 
-                    <md-input-container>
-                        <input name="adresse" ng-model="person.contact.address.street" placeholder="9 rue de l'exemple"
-                               required>
-                        <div ng-messages="formulaireIG.adresse.$error">
-                            <div ng-message="required">Champs requis</div>
-                        </div>
-                    </md-input-container>
+                        <md-input-container>
+                            <input id="nom" placeholder="Nom" required>
+                            <div ng-messages="formulaireIG.nom.$error">
+                                <div ng-message="required">Champ obigatoire</div>
+                            </div>
+                        </md-input-container>
 
-                    <md-input-container>
-                        <input name="ville" ng-model="person.contact.address.city" placeholder="Votre ville" required>
-                        <div ng-messages="formulaireIG.ville.$error">
-                            <div ng-message="required">Champs requis</div>
+                        <h4>Date de naissance</h4>
+                        <md-datepicker ng-model="person.birthDate" md-placeholder="JJ/MM/AAAA" required="">
+                        </md-datepicker>
+                        <div ng-messages="formulaireIG.birthDate.$error">
+                            <div ng-message="required">Date obigatoire</div>
                         </div>
-                    </md-input-container>
 
-                    <md-input-container>
-                        <input name="postalCode" ng-model="person.contact.address.zipCode" placeholder="Code postal"
-                               required ng-pattern="/^[0-9]{5}$/" md-maxlength="5" required>
-                        <div ng-messages="formulaireIG.postalCode.$error">
-                            <div ng-message="required">Champs requis</div>
-                            <div ng-message="pattern">Code postal non valide</div>
-                            <div ng-message="md-maxlength"> Code postal non valide</div>
-                        </div>
-                    </md-input-container>
 
-                    <md-input-container>
-                        <input placeholder="Titre de votre CV">
-                    </md-input-container>
-<p>esse</p>
-                    <md-button type="submit" class="md-raised md-primary">Suivant</md-button>
+                        <md-input-container>
+                            <label>Email</label>
+                            <input name="email" ng-model="person.contact.email" type="email" required=""
+                                   ng-pattern="/^.+@.+\..+$/">
+                            <div ng-messages="formulaireIG.email.$error" role="alert">
+                                <div ng-message-exp="['required', 'pattern']">
+                                    Adresse-mail obigatoire
+                                </div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container>
+                            <input name="adresse" ng-model="person.contact.address.street" placeholder="Rue"
+                                   required>
+                            <div ng-messages="formulaireIG.adresse.$error">
+                                <div ng-message="required">Champ obigatoire</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container>
+                            <input name="ville" ng-model="person.contact.address.city" placeholder="Ville" required>
+                            <div ng-messages="formulaireIG.ville.$error">
+                                <div ng-message="required">Champ obigatoire</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container>
+                            <input name="postalCode" ng-model="person.contact.address.zipCode" placeholder="Code postal"
+                                   required ng-pattern="/^[0-9]{5}$/" md-maxlength="5" required>
+                            <div ng-messages="formulaireIG.postalCode.$error">
+                                <div ng-message="required">Champ obigatoire</div>
+                                <div ng-message="pattern">Code postal non valide</div>
+                                <div ng-message="md-maxlength"> Code postal non valide</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container>
+                            <input ng-model="resume.title" placeholder="Titre de votre CV" required>
+                        </md-input-container>
+                    </ng-form>
+                    <md-button type="submit" class="md-raised md-primary" ng-click="nextTab()"
+                               ng-disabled="formPersonn.$invalid">Suivant
+                    </md-button>
                 </form>
 
 
             </md-content>
         </md-tab>
-        <add-education></add-education>
 
-        <add-experience></add-experience>
 
-        <add-competencie></add-competencie>
-        <add-hobbie></add-hobbie>
+        <md-tab label="Mes Experiences Professionnelles" ng-disabled="formPersonn.$invalid">
+            <md-content class="md-padding">
+                <h1 class="md-display-2">Expérience professionnelle</h1>
+
+                <!-- FORM EXPERIENCES -->
+                <form name="ExpForm" ng-submit="addExp(resume.experiences)">
+                    <ng-form name="formExp">
+                        <md-input-container class="md-block" flex-gt-sm >
+                            <label>Poste</label>
+                            <input ng-model="resume.experiences.title" required>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Entreprise</label>
+                            <input ng-model="resume.experiences.company" required>
+                        </md-input-container>
+
+                        <md-datepicker ng-model="resume.experiences.start" md-placeholder="Début" required="">
+                        </md-datepicker>
+                        <md-datepicker ng-model="resume.experiences.end" md-placeholder="Fin">
+                        </md-datepicker>
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Ville</label>
+                                <input ng-model="resume.experiences.location">
+                            </md-input-container>
+                        </div>
+                        <md-input-container class="md-block">
+                            <label>Description</label>
+                        <textarea ng-model="resume.experiences.description" md-maxlength="150" rows="5"
+                                  md-select-on-focus></textarea>
+                        </md-input-container>
+                    </ng-form>
+
+                    <md-button type="submit" class="md-raised md-primary" ng-click="nextTab()"
+                               ng-disabled="formExp.$invalid">Suivant
+                    </md-button>
+
+                </form>
+            </md-content>
+        </md-tab>
+
+        <md-tab label="Mes Formations" ng-disabled="formExp.$invalid">
+            <md-content class="md-padding">
+                <h1 class="md-display-2">Formation</h1>
+                <!-- FORM FORMATION-->
+
+                <form name="EducForm" ng-submit="addEduc(resume.educations)">
+                    <ng-form name="formEduc">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Titre de la Formation</label>
+                            <input ng-model="resume.educations.title">
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Ecole</label>
+                            <input ng-model="resume.educations.school">
+                        </md-input-container>
+
+                        <md-datepicker required ng-model="resume.educations.start" md-placeholder="Début">
+                        </md-datepicker>
+                        <md-datepicker ng-model="resume.educations.end" md-placeholder="Fin">
+                        </md-datepicker>
+                        <div layout-gt-sm="row">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Ville</label>
+                                <input ng-model="resume.educations.location">
+                            </md-input-container>
+                        </div>
+                        <md-input-container class="md-block">
+                            <label>Description</label>
+                        <textarea ng-model="resume.educations.description" md-maxlength="150" rows="5"
+                                  md-select-on-focus></textarea>
+                        </md-input-container>
+                    </ng-form>
+
+                    <md-button type="submit" class="md-raised md-primary" ng-click="nextTab()"
+                               ng-disabled="formEduc.$invalid">Suivant
+                    </md-button>
+
+                </form>
+            </md-content>
+        </md-tab>
+        <md-tab label="Mes Loisirs" ng-disabled="formEduc.$invalid">
+            <h1 class="md-display-2">Loisir</h1>
+            <md-content class="md-padding">
+                <form name="HobbForm" ng-submit="addHobb(resume.hobbies)">
+                    <ng-form name="formHobb">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Loisir</label>
+                            <input ng-model="resume.hobbies.content.label">
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Type du loisir</label>
+                            <input ng-model="resume.hobbies.genre">
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Detail</label>
+                        <textarea ng-model="resume.hobbies.content.detail" md-maxlength="50" rows="5"
+                                  md-select-on-focus></textarea>
+                        </md-input-container>
+                    </ng-form>
+                    <md-button type="submit" class="md-raised md-primary" ng-click="nextTab()"
+                               ng-disabled="formHobb.$invalid">Valider
+                    </md-button>
+                </form>
+            </md-content>
+        </md-tab>
+
+        <md-tab label="Mes Competences" ng-disabled="formHobb.$invalid">
+            <md-content class="md-padding">
+                <h1 class="md-display-2">Compétences</h1>
+                <form name="CompForm" ng-submit="addComp(resume)">
+                    <ng-form name="formComp">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Nom de la compétence</label>
+                            <input ng-model="resume.competencies.content.label">
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Genre de la compétence</label>
+                            <input ng-model="resume.competencies.genre">
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Niveau</label>
+                            <input ng-model="resume.competencies.content.level">
+                        </md-input-container>
+                    </ng-form>
+                    <md-button type="submit" class="md-raised md-primary" ng-disabled="formComp.$invalid">Suivant
+                    </md-button>
+
+                </form>
+            </md-content>
+        </md-tab>
+
+        <!-- <add-education></add-education>
+         <add-experience></add-experience>
+
+         <add-competencie></add-competencie>
+         <add-hobbie></add-hobbie>-->
 
     </md-tabs>
 </md-content>
