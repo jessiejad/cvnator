@@ -2,7 +2,9 @@
 
 <md-list>
     <md-list-item ng-repeat="handshake in handshakes">
-        <div>{{handshake.created | momentFormat: 'DD MMM YYYY'}} <span ng-if="handshake.createdBy" style="font-style: italic"> by {{handshake.createdBy.username}}</span></div>
+        <div>{{handshake.created | momentFormat: 'DD MMM YYYY'}} <span ng-if="handshake.createdBy"
+                                                                       style="font-style: italic"> by {{handshake.createdBy.username}}</span>
+        </div>
         <div style="padding-left:10px">{{handshake.message}}</div>
     </md-list-item>
 </md-list>
