@@ -1,90 +1,87 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myResumeApp">
 
-    <head>
+<head>
 
-        <meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-        <title>My Resume Application</title>
+    <title>My Resume Application</title>
 
-        <!-- VENDOR STYLE -->
-        <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <!-- VENDOR STYLE -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
 
-        <!-- STYLE -->
-         <link rel="stylesheet" href="style/template.css" media="screen"/>
-          <link rel="stylesheet" href="style/template2.css" media="screen"/>
-        <link rel="stylesheet" href="style/my-resume.css" media="screen"/>
-        <link rel="stylesheet" href="style/app.css" media="screen"/>
+    <!-- STYLE -->
+    <link rel="stylesheet" href="style/template.css" media="screen"/>
+    <link rel="stylesheet" href="style/template2.css" media="screen"/>
+    <link rel="stylesheet" href="style/my-resume.css" media="screen"/>
+    <link rel="stylesheet" href="style/app.css" media="screen"/>
 
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-        <ui-view></ui-view>
+<ui-view></ui-view>
 
-    </body>
+</body>
 
-    <!-- Include Vendor -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-aria/angular-aria.js"></script>
-    <script src="bower_components/angular-messages/angular-messages.js"></script>
+<!-- Include Vendor -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
 
-    <script src="bower_components/angular-material/angular-material.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
-    <script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/moment/moment.js"></script>
 
-    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
-
-
-    <!-- Application -->
-    <script src="app/app.js"></script>
-    <script src="app/routing.js"></script>
-
-    <!-- Security -->
-    <script src="app/services/request.js"></script>
-    <script src="app/controlers/loginCtrl.js"></script>
-    <script src="app/controlers/createUser.js"></script>
-
-    <script src="app/controlers/layoutCtrl.js"></script>
-    <script src="app/controlers/myResumeCtrl.js"></script>
-    <script src="app/controlers/handshakeCtrl.js"></script>
-	<script src="app/controlers/newResumeCtrl.js"></script>
-    <script src="app/controlers/testApiCtrl.js"></script>
-    <script src="app/controlers/templateCtrl.js"></script>
-    <script src="app/controlers/template2Ctrl.js"></script>
-    <script src="app/controlers/userResumeCtrl.js"></script>
-    <script src="app/controlers/monResumeCtrl.js"></script>
-
-    <script src="app/directives/resume.js"></script>
-    <script src="app/directives/resume-line.js"></script>
-     <script src="app/directives/resume-linetempl.js"></script>
-    <script src="app/directives/resume-list.js"></script>
-    <script src="app/directives/resume-listtempl.js"></script>
-    <script src="app/directives/coordonnee-person.js"></script>
-    <script src="app/directives/coordonnee-persontempl.js"></script>
-    <script src="app/directives/template.js"></script>
-    <script src="app/directives/template2.js"></script>
-    <script src="app/directives/add-education.js"></script>
-    <script src="app/directives/add-experience.js"></script>
-    <script src="app/directives/add-competencie.js"></script>
-    <script src="app/directives/add-hobbie.js"></script>
-    
-
-    <script src="app/dialogs/handshake.js"></script>
-
-    <script src="app/filters/moment-format.js"></script>
-    <script src="app/filters/level-format.js"></script>
-    <script src="app/filters/text-limit.js"></script>
-
-    <script src="app/services/security-context.js"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
 
 
+<!-- Application -->
+<script src="app/app.js"></script>
+<script src="app/routing.js"></script>
 
+<!-- Security -->
+<script src="app/services/request.js"></script>
+<script src="app/controlers/loginCtrl.js"></script>
+<script src="app/controlers/createUser.js"></script>
+
+<script src="app/controlers/layoutCtrl.js"></script>
+<script src="app/controlers/myResumeCtrl.js"></script>
+<script src="app/controlers/handshakeCtrl.js"></script>
+<script src="app/controlers/newResumeCtrl.js"></script>
+<script src="app/controlers/testApiCtrl.js"></script>
+<script src="app/controlers/templateCtrl.js"></script>
+<script src="app/controlers/template2Ctrl.js"></script>
+<script src="app/controlers/userResumeCtrl.js"></script>
+<script src="app/controlers/monResumeCtrl.js"></script>
+
+<script src="app/directives/resume.js"></script>
+<script src="app/directives/resume-line.js"></script>
+<script src="app/directives/resume-linetempl.js"></script>
+<script src="app/directives/resume-list.js"></script>
+<script src="app/directives/resume-listtempl.js"></script>
+<script src="app/directives/coordonnee-person.js"></script>
+<script src="app/directives/coordonnee-persontempl.js"></script>
+<script src="app/directives/template.js"></script>
+<script src="app/directives/template2.js"></script>
+<script src="app/directives/add-education.js"></script>
+<script src="app/directives/add-experience.js"></script>
+<script src="app/directives/add-competencie.js"></script>
+<script src="app/directives/add-hobbie.js"></script>
+
+
+<script src="app/dialogs/handshake.js"></script>
+
+<script src="app/filters/moment-format.js"></script>
+<script src="app/filters/level-format.js"></script>
+<script src="app/filters/text-limit.js"></script>
+
+<script src="app/services/security-context.js"></script>
 
 
 </html>
