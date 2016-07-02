@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('myResumeApp')
-    .directive('template', function(){
+    .directive('template1', function(){
         return{
             restrict : 'E',
-            templateUrl : 'app/views/template.html',
+            templateUrl : 'app/views/directives/template.html',
             scope : {
                 resume : '=cv'
             },

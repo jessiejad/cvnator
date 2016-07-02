@@ -27,7 +27,7 @@ angular.module('myResumeApp')
         // ---- Call API to get users resume
         $http.get('http://localhost:3000/myResume').then(function(result){
             console.log(result);
-            if(result == null) {
+            if(result.data == null) {
                 // User n'a pas encore de resume
             }
         }, function(reason){
@@ -39,7 +39,7 @@ angular.module('myResumeApp')
         var resume = {
             "title" : "Création d'un cv via le web",
             "person" : "5774d098958f6ea818d3f3fc",
-            "defaultTemplate" : "temp1"
+            //"defaultTemplate" : "template1"
         }
         console.log(resume);
 

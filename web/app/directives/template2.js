@@ -4,7 +4,7 @@ angular.module('myResumeApp')
     .directive('template2', function(){
         return{
             restrict : 'E',
-            templateUrl : 'app/views/template2.html',
+            templateUrl : 'app/views/directives/template2.html',
             scope : {
                 resume : '=cv'
             },

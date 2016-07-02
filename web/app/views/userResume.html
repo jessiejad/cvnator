@@ -1,0 +1,23 @@
+    <md-toolbar layout="row" class="md-whiteframe-z1">
+        <md-button ui-sref="accueilCv">
+            Accueil
+        </md-button>
+
+        <md-button class="md-fab md-mini" style="background: #FF4081;">
+            <md-icon class="material-icons" style="color: white">mode_edit</md-icon>
+        </md-button>
+
+        <md-button class="md-fab md-mini" style="background: #FF4081;" ng-click="deleteConfirm($event)">
+            <md-icon class="material-icons" style="color: white">delete</md-icon>
+        </md-button>
+
+    </md-toolbar>
+
+    <md-content id="content" flex md-scroll-y >
+
+
+        <resume cv="resume" ng-if="template == 'default'"></resume>
+        <template1 cv="resume" ng-if="template == 'template1'"></template1>
+        <template2 cv="resume" ng-if="template == 'template2'"></template2>
+
+    </md-content>

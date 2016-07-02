@@ -3,6 +3,7 @@
         <md-tab label="Information générale">
             <md-content class="md-padding">
 
+<<<<<<< HEAD
                 <form name="formulaireIG" ng-submit="addPerson(person,resume.title)" novalidate>
                     <ng-form name="formPersonn">
                         <md-input-container>
@@ -11,13 +12,37 @@
                                 <div ng-message="required">Champs requis</div>
                             </div>
                         </md-input-container>
+=======
+                <form name="formulaireIG" ng-submit="addPerson(person)" novalidate>
+				
+                    <md-input-container>
+                        <input ng-model="person.name" placeholder="Prenom" required/>
+                        <div ng-messages="formulaireIG.prenom.$error">
+                            <div ng-message="required">Champs requis</div>
+                        </div>
+                    </md-input-container>
+>>>>>>> 79a0e789deef57407f4cac4c01030f38b069fbd0
 
                         <md-input-container>
                             <input id="nom" placeholder="Nom" required>
                             <div ng-messages="formulaireIG.nom.$error">
                                 <div ng-message="required">Champ obigatoire</div>
                             </div>
+<<<<<<< HEAD
                         </md-input-container>
+=======
+                        </div>
+                    </md-input-container>
+					
+					<md-input-container>
+					<input ng-model="person.phone" type="text" placeholder="Numéro de téléphone" name="phone" required>
+					<div ng-messages="formulaireIG.phone.$error" role="alert">
+					<div ng-message-exp="['required']">
+						Champs requis
+					</div>
+					</div>
+					</md-input-container>
+>>>>>>> 79a0e789deef57407f4cac4c01030f38b069fbd0
 
                         <h4>Date de naissance</h4>
                         <md-datepicker ng-model="person.birthDate" md-placeholder="JJ/MM/AAAA" required="">
