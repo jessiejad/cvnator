@@ -32,8 +32,16 @@ ResumeController.getAll = function(req, res){
 
             async.forEach(results, function(result, callback){
 
+                result.isUserFavorite = false;
+
+                if(req.current_user.favorites.resumes.indexOf(result._id) !== -1) {
+                    console.log("is favorite");
+                    result.isUserFavorite = true;
+                }
+
                 // --- Treatment about resume formatted
                 resultsFormatted.push({
+                    isUserFavorite : result.isUserFavorite,
                     person : result.person,
                     title  : result.title,
                     _id    : result._id
@@ -86,7 +94,16 @@ ResumeController.findResume = function(req, res, next, id){
 ResumeController.getResume = function(req, res){
     Util.info('Get resume '+ req.current_resume._id);
 
-    res.status(200).json(req.current_resume)
+    var resume = req.current_resume;
+    resume.isUserFavorite = false;
+
+    if(req.current_user.favorites.resumes.indexOf(req.current_resume._id) !== -1) {
+        console.log("is favorite");
+        resume.isUserFavorite = true;
+    }
+
+    //console.log(resume);
+    res.status(200).json(resume);
 };
 /**
  * Save a handshake

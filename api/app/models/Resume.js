@@ -75,6 +75,8 @@ var ResumeSchema = new Schema({
 
     "extra" : String,
 
+    "isUserFavorite" : Boolean,
+
     "handshakes" : [{ type :  Schema.Types.ObjectId, ref: 'Handshake'}]
 
 });

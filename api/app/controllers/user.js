@@ -3,6 +3,7 @@ var UserController = exports;
 
 //--------------------------------------- Module dependencies.
 var mongoose 	= require('mongoose'),
+    Person 		= mongoose.model('Person'),
     User 		= mongoose.model('User'),
     Resume 		= mongoose.model('Resume'),
     Util        = require('../helpers/appUtils'),
@@ -57,11 +58,15 @@ UserController.getResume = function(req, res){
 
     Util.info('Load users Resume');
 
-    Resume.findOne({ _id : req.current_user.resume }).populate('person').exec(function(error, result) {
-        console.log(result);
-        res.status(200).json(result);
+    Resume.findOne({ _id : req.current_user.resume }).exec(function(error, resume) {
+        if(resume == null) {
+            res.status(400).json("Users resume not found");
+        }
+        Person.findOne({_id : resume.person}).populate('contact.address').exec(function(err, person){
+            resume.person = person;
+            res.status(200).json(resume);
+        });
     });
-
 };
 
 /**
