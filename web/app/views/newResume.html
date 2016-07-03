@@ -4,7 +4,14 @@
             <h1 class="md-display-2">Informations Générales</h1>
             <md-content class="md-padding">
                 <form name="formulaireIG" ng-submit="addPerson(person,resume.title)" novalidate>
-                    <ng-form name="formPersonn">
+                    <ng-form name="formPerson">
+
+                        <div>
+
+                        <input type=file id="file"  ng-click="ajouter()">
+                            <div id="prev"></div>
+
+                            </div>
                         <md-input-container>
                             <input ng-model="person.name" placeholder="Prenom*" required/>
                             <div ng-messages="formulaireIG.prenom.$error">
@@ -21,7 +28,7 @@
                         </md-input-container>
 
                         <md-input-container>
-                            <input ng-model="person.phone" type="text" placeholder="Numéro de téléphone*" name="phone"
+                            <input ng-model="person.telephone" type="text" placeholder="Numéro de téléphone*" name="phone"
                                    required>
                             <div ng-messages="formulaireIG.phone.$error" role="alert">
                                 <div ng-message-exp="['required']">
@@ -85,91 +92,108 @@
                         </md-input-container>
                     </ng-form>
                     <md-button type="submit" class="md-raised md-primary" ng-click="nextTab()"
-                               ng-disabled="formPersonn.$invalid" >Suivant
+                               ng-disabled="formPerson.$invalid" >Suivant
                     </md-button>
                 </form>
             </md-content>
         </md-tab>
 
 
-        <md-tab label="Mes Experiences Professionnelles" ng-disabled="formPersonn.$invalid">
+        <md-tab label="Mes Experiences Professionnelles" ng-disabled="formPerson.$invalid">
             <md-content class="md-padding">
                 <h1 class="md-display-2">Expérience professionnelle</h1>
 
                 <!-- FORM EXPERIENCES -->
                 <form name="ExpForm" >
-                    <ng-form name="formExp">
+
+                    <ng-form ng-name="formExp">
+                        <ol>
+                            <li data-ng-repeat="exp in resume.experiences track by $index">
+                                <h4>Experience</h4>
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Poste*</label>
-                            <input ng-model="resume.experiences.title" required>
-                        </md-input-container>
-                        <md-input-container class="md-block" flex-gt-sm>
-                            <label>Entreprise*</label>
-                            <input ng-model="resume.experiences.company" required>
+                            <input data-ng-model="resume.experiences[$index].title"  required>
                         </md-input-container>
 
-                        <md-datepicker ng-model="resume.experiences.start" md-placeholder="Début*" required="">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Entreprise*</label>
+                            <input ng-model="resume.experiences[$index].company" required>
+                        </md-input-container>
+
+                        <md-datepicker ng-model="resume.experiences[$index].start" md-placeholder="Début*" required="">
                         </md-datepicker>
-                        <md-datepicker ng-model="resume.experiences.end" md-placeholder="Fin*" required="">
+                        <md-datepicker ng-model="resume.experiences[$index].end" md-placeholder="Fin*" required="">
                         </md-datepicker>
                         <div layout-gt-sm="row">
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>Ville*</label>
-                                <input ng-model="resume.experiences.location" required>
+                                <input ng-model="resume.experiences[$index].location" data-ng-change="changeExperience($index)" required>
                             </md-input-container>
                         </div>
                         <md-input-container class="md-block">
                             <label>Description</label>
-                        <textarea ng-model="resume.experiences.description" md-maxlength="150" rows="5"
+                        <textarea ng-model="resume.experiences[$index].description" md-maxlength="150" rows="5"
                                   md-select-on-focus></textarea>
                         </md-input-container>
+                                <md-button data-ng-show="exp" class="md-accent md-raised md-hue-1" data-ng-click="resume.experiences.splice($index,1)">
+                            Supprimer</md-button>
+                        </li>
+                    </ol>
                     </ng-form>
+
 
                     <md-button class="md-raised md-warn" ng-click="PrevTab()">Précédent </md-button>
                     <md-button type="submit" class="md-raised md-primary" ng-click="nextTab()"
-                               ng-disabled="formExp.$invalid">Suivant
+                               >Suivant
                     </md-button>
 
                 </form>
             </md-content>
         </md-tab>
 
-        <md-tab label="Mes Formations" ng-disabled="formExp.$invalid">
+        <md-tab label="Mes Formations" ng-disabled="formPerson.$invalid">
             <md-content class="md-padding">
                 <h1 class="md-display-2">Formation</h1>
                 <!-- FORM FORMATION-->
 
                 <form name="EducForm" >
                     <ng-form name="formEduc">
+                        <ol>
+                            <li data-ng-repeat="educ in resume.educations track by $index">
+                                <h4>Formation</h4>
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Titre de la Formation*</label>
-                            <input ng-model="resume.educations.title" required>
+                            <input ng-model="resume.educations[$index].title" required>
                         </md-input-container>
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Ecole*</label>
-                            <input ng-model="resume.educations.school" required>
+                            <input ng-model="resume.educations[$index].school" required>
                         </md-input-container>
 
-                        <md-datepicker required ng-model="resume.educations.start" md-placeholder="Début*" required="">
+                        <md-datepicker required ng-model="resume.educations[$index].start" md-placeholder="Début*" required="">
                         </md-datepicker>
-                        <md-datepicker ng-model="resume.educations.end" md-placeholder="Fin*" required="">
+                        <md-datepicker ng-model="resume.educations[$index].end" md-placeholder="Fin*" required="">
                         </md-datepicker>
                         <div layout-gt-sm="row">
                             <md-input-container class="md-block" flex-gt-sm>
                                 <label>Ville*</label>
-                                <input ng-model="resume.educations.location" required>
+                                <input ng-model="resume.educations[$index].location" data-ng-change="changeEducation($index)" required>
                             </md-input-container>
                         </div>
                         <md-input-container class="md-block">
                             <label>Description</label>
-                        <textarea ng-model="resume.educations.description" md-maxlength="150" rows="5"
+                        <textarea ng-model="resume.educations[$index].description" md-maxlength="150" rows="5"
                                   md-select-on-focus></textarea>
                         </md-input-container>
+                                <md-button data-ng-show="educ" class="md-accent md-raised md-hue-1" data-ng-click="resume.educations.splice($index,1)">
+                                    Supprimer</md-button>
+                            </li>
+                        </ol>
                     </ng-form>
 
                     <md-button class="md-raised md-warn" ng-click="PrevTab()">Précédent </md-button>
                     <md-button type="submit" class="md-raised md-primary" ng-click="nextTab()"
-                               ng-disabled="formEduc.$invalid">Suivant
+                               >Suivant
                     </md-button>
 
                 </form>
@@ -177,69 +201,76 @@
         </md-tab>
 
 
-        <md-tab label="Mes Competences" ng-disabled="formHobb.$invalid">
+        <md-tab label="Mes Competences" ng-disabled="formPerson.$invalid">
             <md-content class="md-padding">
                 <h1 class="md-display-2">Compétences</h1>
                 <form name="CompForm" >
                     <ng-form name="formComp">
+                        <ol>
+                            <li  data-ng-repeat="comp in resume.competencies track by $index">
+                                <h4>Compétence</h4>
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Nom de la compétence*</label>
-                            <input ng-model="resume.competencies.content.label" required>
+                            <input ng-model="resume.competencies[$index].content.label" required>
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Genre de la compétence*</label>
-                            <input ng-model="resume.competencies.genre" required>
+                            <input ng-model="resume.competencies[$index].type" data-ng-change="changeCompetence($index)"required>
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Niveau</label>
-                            <input ng-model="resume.competencies.content.level">
+                            <input ng-model="resume.competencies[$index].content.level">
                         </md-input-container>
+                                <md-button data-ng-show="comp" class="md-accent md-raised md-hue-1" data-ng-click="resume.competencies.splice($index,1)">
+                                    Supprimer</md-button>
+                            </li>
+                        </ol>
                     </ng-form>
 
                     <md-button class="md-raised md-warn" ng-click="PrevTab()">Précédent </md-button>
-                    <md-button type="submit" class="md-raised md-primary" ng-click="nextTab()" ng-disabled="formComp.$invalid">Suivant
+                    <md-button type="submit" class="md-raised md-primary" ng-click="nextTab()" >Suivant
                     </md-button>
 
                 </form>
             </md-content>
         </md-tab>
 
-        <md-tab label="Mes Loisirs" ng-disabled="formEduc.$invalid">
+        <md-tab label="Mes Loisirs" ng-disabled="formPerson.$invalid">
             <h1 class="md-display-2">Loisir</h1>
             <md-content class="md-padding">
                 <form name="HobbForm" ng-submit="addResume(resume)">
                     <ng-form name="formHobb">
+                        <ol>
+                            <li  data-ng-repeat="hobb in resume.hobbies track by $index">
+                                <h4>Loisir</h4>
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Loisir*</label>
-                            <input ng-model="resume.hobbies.content.label" required>
+                            <input ng-model="resume.hobbies[$index].content[$index].label" required>
                         </md-input-container>
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Type du loisir*</label>
-                            <input ng-model="resume.hobbies.genre" required>
+                            <input ng-model="resume.hobbies[$index].type" data-ng-change="changeHobbie($index)" required>
                         </md-input-container>
                         <md-input-container class="md-block">
                             <label>Detail</label>
-                        <textarea ng-model="resume.hobbies.content.detail" md-maxlength="50" rows="5"
+                        <textarea ng-model="resume.hobbies[$index].content[$index].detail" md-maxlength="50" rows="5"
                                   md-select-on-focus></textarea>
                         </md-input-container>
+                        <md-button href="" data-ng-show="hobb" class="md-accent md-raised md-hue-1" data-ng-click="resume.hobbies.splice($index,1)">
+                            Supprimer</md-button>
+                        </li>
+                        </ol>
                     </ng-form>
 
                     <md-button class="md-raised md-warn" ng-click="PrevTab()">Précédent</md-button>
                     <md-button type="submit" class="md-raised md-primary"
-                               ng-disabled="formHobb.$invalid" ng-click="showAlert($event)">Valider
+                                ng-click="addResume(resume)">Valider
                     </md-button>
                 </form>
             </md-content>
         </md-tab>
-
-
-        <!-- <add-education></add-education>
-         <add-experience></add-experience>
-
-         <add-competencie></add-competencie>
-         <add-hobbie></add-hobbie>-->
 
     </md-tabs>
 </md-content>
