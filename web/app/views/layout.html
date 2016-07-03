@@ -25,6 +25,8 @@
                               ng-repeat="resume in resumes | filter : input | orderBy : 'person.name'"
                               ng-class="{'active' : resume.person.name == current_resume.person.name}">
 
+                    <md-icon md-svg-src="images/icons/ic_favorite_black_24px.svg"
+                             ng-if="resume.isUserFavorite" style="color: pink"></md-icon>
                     <img ng-if="resume.person.photo" ng-src="images/candidate/{{resume.person.photo}}" class="md-avatar" alt="{{resume.person.name}}"/>
                     <img ng-if="!resume.person.photo" ng-src="images/candidate/download.png" class="md-avatar" alt="Default" />
 
@@ -73,9 +75,18 @@
                             <md-tooltip md-autohide="true" md-direction="left" >Voir les contacts de {{current_resume.person.name}}</md-tooltip>
                         </md-button>
 
+                        <md-button ng-if="!current_resume.isUserFavorite"
+                                   aria-label="AFavorite" class="md-fab md-raised md-mini" ng-click="addToFavorites()" >
+                            <!--md-icon class="material-icons" aria-label="Add to favorites">favorite</md-icon-->
+                            <md-icon md-svg-src="images/icons/ic_favorite_border_black_24px.svg" aria-label="Add to favorites"></md-icon>
+                            <md-tooltip md-autohide="true" md-direction="left" >Ajouter aux Favoris</md-tooltip>
+                        </md-button>
 
-                        <md-button class="md-fab md-mini" style="background: #FF4081;">
-                            <md-icon class="material-icons" style="color: pink">favorite</md-icon>
+                        <md-button ng-if="current_resume.isUserFavorite"
+                                   aria-label="DFavorite" class="md-fab md-raised md-mini" ng-click="deleteFromFavorites()" >
+                            <!--md-icon class="material-icons" aria-label="Delte from favorites" style="color: pink">favorite</md-icon-->
+                            <md-icon md-svg-src="images/icons/ic_favorite_black_24px.svg" aria-label="Delete from favorites"></md-icon>
+                            <md-tooltip md-autohide="true" md-direction="left" >Supprimer des Favoris</md-tooltip>
                         </md-button>
 
                         

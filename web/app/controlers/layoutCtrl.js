@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myResumeApp')
-    .controller('layoutCtrl', function($scope, $http,$mdSidenav,$mdDialog,$mdToast,$state){
+    .controller('layoutCtrl', function($scope, $http,$mdSidenav,$mdDialog,$mdToast,$state, $stateParams){
 
         /**
          * Load all CV from the database
@@ -16,24 +16,29 @@ angular.module('myResumeApp')
          * Action to open a Resume
          * @param resume
          */
-        $scope.displayResume = function(resume){
+        var current_resume;
+        var displayResume = function(resume){
+             console.log("display");
+            current_resume = resume;
             $scope.current_resume = resume;
             // --- Transition to go to resume
             $state.transitionTo('resume', {resumeId : resume._id });
 
             $scope.toggleList();
         };
+        $scope.displayResume = displayResume;
 
         /**
          * Method to update the current layout
          * @param resume
          */
-        $scope.updateLayout = function(resume){
+        var updateLayout = function(resume){
             $scope.current_resume   = resume;
             $scope.title            = resume.title;
             $scope.person           = resume.person;
             $scope.resume_selected  = true;
         };
+        $scope.updateLayout = updateLayout;
 
           $scope.updateTemplate = function(resume){
             $scope.current_resume   = resume;
@@ -105,6 +110,37 @@ angular.module('myResumeApp')
             $state.transitionTo('handshake', {resumeId : $scope.current_resume._id, person : $scope.person });
         }
 
-        
-       
+
+        $scope.addToFavorites = function() {
+            console.log('addToFavorites', current_resume._id);
+            // ---- Call API to add a resume to users favorites
+            $http.post('http://localhost:3000/favorites/' + current_resume._id).then(function(result){
+                console.log(result);
+                var addedFavoriteId = result.data;
+                callback(current_resume._id, true);
+            }, function(reason){
+                console.log(reason);
+                $mdToast.simpleToast("Erreur lors de l'ajout aux favoris")
+            });
+        };
+
+        $scope.deleteFromFavorites = function() {
+            console.log('deleteToFavorites', current_resume._id);
+            // ---- Call API to delete a resume from users favorites
+            $http.delete('http://localhost:3000/favorites/' + current_resume._id).then(function(result){
+                console.log(result);
+                var deletedFavoriteId = result.data;
+                callback(current_resume._id, false);
+            }, function(reason){
+                console.log(reason);
+                $mdToast.simpleToast("Erreur lors de la suppression du favoris")
+            });
+        };
+
+        var callback = function (id, bool) {
+            current_resume.isUserFavorite = bool;
+            console.log("callback", current_resume);
+            updateLayout(current_resume);
+            $state.transitionTo('resume', {resumeId : id});
+        }
     });
