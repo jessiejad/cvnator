@@ -80,3 +80,15 @@ PersonController.createPerson = function(req, res){
         }
     })
 };
+
+/**
+ *  Person
+ * @param req
+ * @param res
+ */
+PersonController.updatePerson = function(req,res){
+    req.current_person.update(req.body, function(err, result) {
+        console.log(err, result);
+        res.status(200).json({id : req.current_person});
+    });
+}

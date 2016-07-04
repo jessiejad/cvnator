@@ -129,24 +129,13 @@ angular.module('myResumeApp')
 
         };
 
-        $scope.showAlert = function (ev) {
-            $mdDialog.show(
-                $mdDialog.alert()
-                    .parent(angular.element(document.querySelector('#popupContainer')))
-                    .clickOutsideToClose(true)
-                    .title('Information')
-                    .textContent('Votre Cv a été créé avec succés')
-                    .ariaLabel('Alert Dialog Demo')
-                    .ok('OK')
-                    .targetEvent(ev)
-            );
-        };
-        $scope.addPerson = function (person, title) {
+       
+        $scope.addPerson = function (person, title,template) {
             console.log(title);
+            console.log(template);
             var nom = document.getElementById("nom").value;
             person.name += " " + nom;
             if (imgElement != null) {
-
                 var fichier = imgElement.scr;
                 person.photo = fichier;
             }
@@ -168,7 +157,7 @@ angular.module('myResumeApp')
 
             $http.post('http://localhost:3000/resumes', resume).then(function (result) {
                 console.log(result);
-                $state.transitionTo('monResume');
+                $state.transitionTo('userResume');
             }, function (reason) {
                 console.log(reason);
                 $mdToast.simpleToast("Erreur lors de la création du cv")

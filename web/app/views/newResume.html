@@ -1,13 +1,12 @@
 <md-content>
-    <md-tabs md-dynamic-height="" md-border-bottom="" md-selected="selectedIndex">
-        <md-tab label="Mes,Informations générales">
+    <md-tabs md-dynamic-height="" md-border-bottom="" md-selected="selectedIndex" >
+        <md-tab label="Mes Informations générales" >
             <h1 class="md-display-2">Informations Générales</h1>
             <md-content class="md-padding">
-                <form name="formulaireIG" ng-submit="addPerson(person,resume.title)" novalidate>
+                <form name="formulaireIG" ng-submit="addPerson(person,resume.title,resume.template)" novalidate>
                     <ng-form name="formPerson">
 
                         <div>
-
                         <input type=file id="file"  ng-click="ajouter()">
                             <div id="prev"></div>
 
@@ -27,17 +26,6 @@
 
                         </md-input-container>
 
-                        <md-input-container>
-                            <input ng-model="person.telephone" type="text" placeholder="Numéro de téléphone*" name="phone"
-                                   required>
-                            <div ng-messages="formulaireIG.phone.$error" role="alert">
-                                <div ng-message-exp="['required']">
-                                    Champ obligatoire
-                                </div>
-                            </div>
-
-                        </md-input-container>
-
                         <h4>Date de naissance</h4>
                         <md-datepicker ng-model="person.birthDate" md-placeholder="JJ/MM/AAAA" required="">
                         </md-datepicker>
@@ -46,6 +34,10 @@
                         </div>
 
                         <br>
+                        <md-input-container>
+                            <input ng-model="person.contact.telephone"  placeholder="Numéro de téléphone*"
+                                   required>
+                        </md-input-container>
                         <md-input-container>
                             <label>Email*</label>
                             <input name="email" ng-model="person.contact.email" type="email" required=""
@@ -89,6 +81,20 @@
                         <md-input-container>
                             <label>Titre de votre CV*</label>
                             <input ng-model="resume.title" required>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Choisir un template</label>
+                            <md-select ng-model="resume.defaultTemplate">
+                                <md-option ng-model="resume.defaultTemplate" id="Default">
+                                    default
+                                </md-option>
+                                <md-option ng-model="resume.defaultTemplate" id="template1">
+                                    template1
+                                </md-option>
+                                <md-option ng-model="resume.defaultTemplate" id="template2">
+                                    template2
+                                </md-option>
+                            </md-select>
                         </md-input-container>
                     </ng-form>
                     <md-button type="submit" class="md-raised md-primary" ng-click="nextTab()"
@@ -216,7 +222,7 @@
 
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Genre de la compétence*</label>
-                            <input ng-model="resume.competencies[$index].type" data-ng-change="changeCompetence($index)"required>
+                            <input ng-model="resume.competencies[$index].genre" data-ng-change="changeCompetence($index)"required>
                         </md-input-container>
 
                         <md-input-container class="md-block" flex-gt-sm>
@@ -251,7 +257,7 @@
                         </md-input-container>
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>Type du loisir*</label>
-                            <input ng-model="resume.hobbies[$index].type" data-ng-change="changeHobbie($index)" required>
+                            <input ng-model="resume.hobbies[$index].genre" data-ng-change="changeHobbie($index)" required>
                         </md-input-container>
                         <md-input-container class="md-block">
                             <label>Detail</label>

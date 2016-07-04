@@ -17,13 +17,7 @@ angular.module('myResumeApp')
                 parent      : 'home'
             })
 
-             .state('monResume',{
-                url     :'/monResume',
-                templateUrl : 'app/views/monResume.html',
-                controller  : 'monResumeCtrl',
-                
-            })
-
+             
             .state('handshake',{
                 url         : 'resume/:resumeId/handshakes',
                 templateUrl : 'app/views/handshake.html',
@@ -59,6 +53,11 @@ angular.module('myResumeApp')
                 url         : '/userResume',
                 templateUrl : 'app/views/userResume.html',
                 controller  : 'userResumeCtrl'
+            })
+            .state('updateResume',{
+                url         : '/updateResume',
+                templateUrl : 'app/views/updateResume.html',
+                controller  : 'updateResumeCtrl'
             })
 
             // Provisoire
